@@ -19,14 +19,16 @@ public class HomeController {
 	private IEmployeeDao employeeDao;
 
 	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
-	public String showHome() {
-		return "home";
-	}
-
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String listEmployees(Model model) {
+	public String showHome(Model model) {
 		List<EmployeeEntity> employeeEntities = employeeDao.getEmployeeEntities();
 		model.addAttribute("employees", employeeEntities);
 		return "home";
 	}
+
+//	@RequestMapping(value = "/list", method = RequestMethod.GET)
+//	public String listEmployees(Model model) {
+//		List<EmployeeEntity> employeeEntities = employeeDao.getEmployeeEntities();
+//		model.addAttribute("employees", employeeEntities);
+//		return "home";
+//	}
 }

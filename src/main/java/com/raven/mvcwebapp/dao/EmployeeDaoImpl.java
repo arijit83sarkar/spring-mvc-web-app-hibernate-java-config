@@ -22,7 +22,7 @@ public class EmployeeDaoImpl implements IEmployeeDao {
 	public List<EmployeeEntity> getEmployeeEntities() {
 		Session session = sessionFactory.getCurrentSession();
 //		Query<EmployeeEntity> query = session.createQuery("from Employee", EmployeeEntity.class);
-		List<EmployeeEntity> employeeEntities = session.createQuery("from Employee", EmployeeEntity.class).list();
+		List<EmployeeEntity> employeeEntities = session.createQuery("from EmployeeEntity", EmployeeEntity.class).list();
 		return employeeEntities;
 	}
 
