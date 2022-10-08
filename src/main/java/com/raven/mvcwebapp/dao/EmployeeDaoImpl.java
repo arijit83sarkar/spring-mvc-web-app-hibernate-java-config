@@ -26,4 +26,19 @@ public class EmployeeDaoImpl implements IEmployeeDao {
 		return employeeEntities;
 	}
 
+	@Override
+	@Transactional
+	public EmployeeEntity getEmployee(int empId) {
+		Session session = sessionFactory.getCurrentSession();
+		EmployeeEntity employeeEntity = session.get(EmployeeEntity.class, empId);
+		return employeeEntity;
+	}
+
+	@Override
+	@Transactional
+	public void saveEmployee(EmployeeEntity employeeEntity) {
+		Session session = sessionFactory.getCurrentSession();
+		session.saveOrUpdate(employeeEntity);
+	}
+
 }

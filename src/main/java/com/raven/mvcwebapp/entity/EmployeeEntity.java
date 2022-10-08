@@ -11,20 +11,20 @@ public class EmployeeEntity {
 	@Column(name = "emp_id")
 	private int empId;
 
-	@Column(name = "user_name", length = 20)
-	private String userName = "";
-
 	@Column(name = "first_name", length = 20)
 	private String firstName = "";
 
 	@Column(name = "last_name", length = 20)
 	private String lastName = "";
 
-	@Column(name = "gender", length = 5)
+	@Column(name = "gender", length = 8)
 	private String gender = "";
 
 	@Column(name = "phone_number", length = 12)
 	private String phoneNumber = "";
+
+	@Column(name = "email", length = 60)
+	private String email = "";
 
 	@Column(name = "country", length = 15)
 	private String country = "";
@@ -35,13 +35,13 @@ public class EmployeeEntity {
 	public EmployeeEntity() {
 	}
 
-	public EmployeeEntity(String userName, String firstName, String lastName, String gender, String phoneNumber,
+	public EmployeeEntity(String firstName, String lastName, String gender, String phoneNumber, String email,
 			String country, String jobTitle) {
-		this.userName = userName;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.gender = gender;
 		this.phoneNumber = phoneNumber;
+		this.email = email;
 		this.country = country;
 		this.jobTitle = jobTitle;
 	}
@@ -52,14 +52,6 @@ public class EmployeeEntity {
 
 	public void setEmpId(int empId) {
 		this.empId = empId;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
 	}
 
 	public String getFirstName() {
@@ -94,6 +86,14 @@ public class EmployeeEntity {
 		this.phoneNumber = phoneNumber;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getCountry() {
 		return country;
 	}
@@ -112,9 +112,9 @@ public class EmployeeEntity {
 
 	@Override
 	public String toString() {
-		return "EmployeeEntity [empId=" + empId + ", userName=" + userName + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", gender=" + gender + ", phoneNumber=" + phoneNumber + ", country=" + country
-				+ ", jobTitle=" + jobTitle + "]";
+		return "EmployeeEntity [empId=" + empId + ", firstName=" + firstName + ", lastName=" + lastName + ", gender="
+				+ gender + ", phoneNumber=" + phoneNumber + ", email=" + email + ", country=" + country + ", jobTitle="
+				+ jobTitle + "]";
 	}
 
 }
