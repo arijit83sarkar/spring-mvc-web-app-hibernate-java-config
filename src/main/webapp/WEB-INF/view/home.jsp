@@ -75,6 +75,9 @@ body {
 						<c:url var="updateLink" value="/showEmployeeUpdateForm">
 							<c:param name="empId" value="${employee.empId}"></c:param>
 						</c:url>
+						<c:url var="deleteLink" value="/deleteEmployee">
+							<c:param name="empId" value="${employee.empId}"></c:param>
+						</c:url>
 						<tr>
 							<th scope="row">${loopCounter.count}</th>
 							<td><c:out value="${employee.firstName}" />&nbsp<c:out
@@ -83,7 +86,11 @@ body {
 							<td><c:out value="${employee.phoneNumber}" /></td>
 							<td><c:out value="${employee.jobTitle}" /></td>
 							<td><c:out value="${employee.country}" /></td>
-							<td><a href="${updateLink}">Update</a></td>
+							<td>
+							<a href="${updateLink}">Update</a>
+							-
+							<a href="${deleteLink}">Delete</a>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>

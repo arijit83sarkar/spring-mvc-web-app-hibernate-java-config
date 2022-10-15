@@ -12,7 +12,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -37,6 +36,19 @@ public class HibernateConfiguration {
 //	}
 
 	@Bean
+	public LocalSessionFactoryBean sessionFactory() {
+		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+
+		sessionFactory.setDataSource(getDataSource());
+		sessionFactory.setPackagesToScan(new String[] { "com.raven.mvcwebapp.entity" });
+//		sessionFactory.setPackagesToScan(environment.getProperty("hiberante.packagesToScan"));
+		sessionFactory.setHibernateProperties(hibernateProperties());
+
+//		return sessionFactory.getObject();
+		return sessionFactory;
+	}
+	
+	@Bean
 	public DataSource getDataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
 
@@ -58,19 +70,6 @@ public class HibernateConfiguration {
 //		properties.put("hibernate.packagesToScan", environment.getRequiredProperty("hibernate.packagesToScan"));
 
 		return properties;
-	}
-
-	@Bean
-	public LocalSessionFactoryBean sessionFactory() {
-		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-
-		sessionFactory.setDataSource(getDataSource());
-		sessionFactory.setPackagesToScan(new String[] { "com.raven.mvcwebapp.entity" });
-//		sessionFactory.setPackagesToScan(environment.getProperty("hiberante.packagesToScan"));
-		sessionFactory.setHibernateProperties(hibernateProperties());
-
-//		return sessionFactory.getObject();
-		return sessionFactory;
 	}
 
 	@Bean
